@@ -13,12 +13,13 @@ Cache.prototype.addToList = function (key, value) {
 }
 
 Cache.prototype.getFromList = function (key) {
-    for (i = 0; i < this.cacheList.length; i++) {
-        if (this.cacheList[i][key]) {
-            value = this.cacheList[i][key];
-            var obj = this.cacheList[i];
-            this.cacheList.splice(i, 1);
-            this.cacheList.unshift(obj);
+    var list = this.cacheList
+    for (i = 0; i < list.length; i++) {
+        if (list[i][key]) {
+            var value = list[i][key];
+            var obj = list[i];
+            list.splice(i, 1);
+            list.unshift(obj);
             return value;
         }
     }
